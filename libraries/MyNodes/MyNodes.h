@@ -31,57 +31,60 @@ char* getCodeVersion()
 }
 /*
 The following are the Node Ids assigned, populated here as comments for easy reference.
+The values mentioned in [] is their corresponding parent node ids.
 0 - Gateway
-1 - Balcony Lights
-2 - Staircase Lights
-3 - Gate Lights
-4 - Tank 01
-5 - Tank 02
-6 - Tank 03
-7 - Borewell Motor
-8 - Sump Motor
-9 - Tap Motor
-10 - Repeater Node 01
-11 - LCD
-12 - Battery Voltage
-13 - Solar Voltage
-14 - Controller
-15 - Repeater Node 02
-16 - Inverter In
-17 - Inverter Out
-18 - 3Phase Wattmeter
-19 - 1Phase Wattmeter
-20 - Temperature & Humidity 
-21 - Terrace Soil Sensor
-22 - GFloor Soil Sensor
-23 - SMS Node
-250 - Default Firmware Node
-254 - Thingspeak Node
+1 - Repeater Node 01 [0]
+2 - Repeater Node 02 [0]
+3 - Repeater Node 03 [0]
+4 - Repeater Node 04 [1]
+5 - Repeater Node 05 [1]
+6 - Balcony Lights   [1]
+7 - Staircase Lights [1]
+8 - Gate Lights      [1]
+9 - Borewell Motor   [4]
+10 - Sump Motor      [4]
+11 - Tap Motor       [4]
+12 - Battery Voltage [4]
+13 - Solar Voltage   [4]
+14 - Inverter In     [5]
+15 - Inverter Out    [5]
+16 - 3Phase Wattmeter[5]
+17 - 1Phase Wattmeter[5]
+18 - Temperature & Humidity [5]
+19 - GFloor Soil Sensor  [5]
+20 - Tank 01 [4]
+21 - Tank 02 [3]
+22 - Tank 03 [3]
+23 - Terrace Soil Sensor [3]
+
+250 - Default Firmware Node [X]
+254 - Thingspeak Node [1]
 */
 
-#define BALCONYLIGHT_NODE_ID 1
-#define STAIRCASE_LIGHT_NODE_ID 2
-#define GATELIGHT_NODE_ID 3
-#define TANK_01_NODE_ID 4
-#define TANK_02_NODE_ID 5
-#define TANK_03_NODE_ID 6
-#define BOREWELL_NODE_ID 7
-#define SUMP_MOTOR_NODE_ID 8
-#define TAP_MOTOR_NODE_ID 9
-#define REPEATER_01_NODE_ID 10
-#define LCD_NODE_ID 11
+#define GATEWAY_NODE_ID 0
+#define REPEATER_01_NODE_ID 1
+#define REPEATER_02_NODE_ID 2
+#define REPEATER_03_NODE_ID 3
+#define REPEATER_04_NODE_ID 4
+#define REPEATER_05_NODE_ID 5
+#define BALCONYLIGHT_NODE_ID 6
+#define STAIRCASE_LIGHT_NODE_ID 7
+#define GATELIGHT_NODE_ID 8
+#define BOREWELL_NODE_ID 9
+#define SUMP_MOTOR_NODE_ID 10
+#define TAP_MOTOR_NODE_ID 11
 #define BATT_VOLTAGE_NODE_ID 12
 #define SOLAR_VOLTAGE_NODE_ID 13
-#define REMOTE_CONTROLLER_NODE_ID 14
-#define REPEATER_02_NODE_ID 15
-#define INV_IN_NODE_ID 16
-#define INV_OUT_NODE_ID 17
-#define PH3_NODE_ID 18
-#define PH1_NODE_ID 19
-#define TEMP_AND_HUMIDITY_NODE_ID 20
-#define TERRACE_SOIL_SENSOR_NODE_ID 21
-#define GFLOOR_SOIL_SENSOR_NODE_ID 22
-#define SMS_NODE_ID 23
+#define INV_IN_NODE_ID 14
+#define INV_OUT_NODE_ID 15
+#define PH3_NODE_ID 16
+#define PH1_NODE_ID 17
+#define TEMP_AND_HUMIDITY_NODE_ID 18
+#define GFLOOR_SOIL_SENSOR_NODE_ID 19
+#define TANK_01_NODE_ID 20
+#define TANK_02_NODE_ID 21
+#define TANK_03_NODE_ID 22
+#define TERRACE_SOIL_SENSOR_NODE_ID 23
 
 
 #define DEFAULT_FIRMWARE_NODE_ID 250
@@ -151,7 +154,7 @@ The following are the Node Ids assigned, populated here as comments for easy ref
 #define MY_DEFAULT_TX_LED_PIN  6
 #endif
 
-#if defined STATUS_LEDS_MODEMCU
+#if defined STATUS_LEDS_NODEMCU
 #define MY_DEFAULT_LED_BLINK_PERIOD 300
 #define MY_WITH_LEDS_BLINKING_INVERSE
 #define MY_DEFAULT_RX_LED_PIN  LED_BUILTIN
@@ -392,8 +395,8 @@ byte colsPins[2] = { 4,5 };
 #define MOTION_DETECTED 1
 #define NO_MOTION_DETECTED 0
 
-#define BALCONYLIGHT_WITH_PIR_NODE_ID 1
-#define GATELIGHT_WITH_PIR_NODE_ID 3
+#define BALCONYLIGHT_WITH_PIR_NODE_ID 6
+#define GATELIGHT_WITH_PIR_NODE_ID 8
 
 #endif
 
