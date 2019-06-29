@@ -68,9 +68,9 @@ The values mentioned in [] is their corresponding parent node ids.
 #define REPEATER_03_NODE_ID 3
 #define REPEATER_04_NODE_ID 4
 #define REPEATER_05_NODE_ID 5
-#define BALCONYLIGHT_NODE_ID 6
+#define BALCONY_LIGHT_NODE_ID 6
 #define STAIRCASE_LIGHT_NODE_ID 7
-#define GATELIGHT_NODE_ID 8
+#define GATE_LIGHT_NODE_ID 8
 #define BOREWELL_NODE_ID 9
 #define SUMP_MOTOR_NODE_ID 10
 #define TAP_MOTOR_NODE_ID 11
