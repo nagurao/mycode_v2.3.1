@@ -29,6 +29,7 @@ char* getCodeVersion()
 	strcat(codeVersion, __TIME__);
 	return codeVersion;
 }
+
 /*
 The following are the Node Ids assigned, populated here as comments for easy reference.
 The values mentioned in [] is their corresponding parent node ids.
@@ -270,7 +271,6 @@ The values mentioned in [] is their corresponding parent node ids.
 #define VALVE_RELAY_PIN 7
 #define SENSOR_CONTROL_PIN 8
 #endif
-
 
 #if defined SMS_NODE
 
