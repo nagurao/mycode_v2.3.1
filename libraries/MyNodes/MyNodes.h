@@ -147,6 +147,9 @@ The values mentioned in [] is their corresponding parent node ids.
 #endif
 
 #if defined STATUS_LEDS
+//Err -> Red
+//Rx  -> Green
+//Tx  -> Blue
 #define MY_DEFAULT_LED_BLINK_PERIOD 300
 #define MY_WITH_LEDS_BLINKING_INVERSE
 #define MY_DEFAULT_ERR_LED_PIN 4  
