@@ -85,7 +85,6 @@ void loop()
 
 void receive(const MyMessage &message)
 {
-	int newLightOnDuration;
 	switch (message.type)
 	{
 	case V_STATUS:
