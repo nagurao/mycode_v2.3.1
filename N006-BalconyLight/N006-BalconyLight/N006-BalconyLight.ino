@@ -11,11 +11,12 @@
 #define MY_PARENT_NODE_ID REPEATER_01_NODE_ID
 #define MY_PARENT_NODE_IS_STATIC
 
+#define STATUS_LEDS
+#define APPLICATION_NAME "Balcony Light"
+
 #include <MyNodes.h>
 #include <MySensors.h>
 #include <MyConfig.h>
-
-#define APPLICATION_NAME "Balcony Light"
 
 byte lightRelayStatusRequestCount;
 
