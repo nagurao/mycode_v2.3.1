@@ -19,6 +19,11 @@
 #define ONE_HOUR 3600
 #define REQUEST_INTERVAL 60
 #define HEARTBEAT_INTERVAL 600
+#define HRS19 19
+#define HRS23 23
+#define MIN00 00
+#define MIN45 45
+#define SEC00 00
 
 char* getCodeVersion()
 {
