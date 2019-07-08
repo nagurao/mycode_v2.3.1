@@ -122,6 +122,7 @@ void receive(const MyMessage &message)
 				turnOnLights();
 			else
 				turnOffLights();
+			requestTime();
 			break;
 		}
 		break;
