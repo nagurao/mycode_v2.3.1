@@ -26,6 +26,9 @@ boolean sendLightRelayStatusRequest;
 AlarmId requestTimer;
 AlarmId heartbeatTimer;
 
+AlarmId onTimer;
+AlarmId offTimer;
+
 MyMessage lightRelayMessage(LIGHT_RELAY_ID, V_STATUS);
 MyMessage staircaseLightRelayMessage(LIGHT_RELAY_ID, V_STATUS);
 MyMessage thingspeakMessage(WIFI_NODEMCU_ID, V_CUSTOM);
@@ -47,6 +50,10 @@ void setup()
 	thingspeakMessage.setType(V_CUSTOM);
 	thingspeakMessage.setSensor(WIFI_NODEMCU_ID);
 	lightRelayStatusRequestCount = 0;
+	setSyncInterval(ONE_HOUR * 3);
+	setSyncProvider(getTimeFromGateway);
+	onTimer = Alarm.alarmRepeat(HRS19, MIN00, SEC00, turnOnLights);
+	offTimer = Alarm.alarmRepeat(HRS23, MIN45, SEC00, turnOffLights);
 	heartbeatTimer = Alarm.timerRepeat(HEARTBEAT_INTERVAL, heartbeat);
 }
 
@@ -105,6 +112,7 @@ void receive(const MyMessage &message)
 				turnOnLights();
 			else
 				turnOffLights();
+			requestTime();
 			break;
 		}
 		break;
@@ -142,4 +150,19 @@ void checkLightRelayStatusRequest()
 void heartbeat()
 {
 	sendHeartbeat();
+}
+
+time_t getTimeFromGateway()
+{
+	requestTime();
+	return 0;
+}
+
+void receiveTime(unsigned long controllerTime)
+{
+	setTime(controllerTime);
+	Alarm.free(onTimer);
+	Alarm.free(offTimer);
+	onTimer = Alarm.alarmRepeat(HRS19, MIN00, SEC00, turnOnLights);
+	offTimer = Alarm.alarmRepeat(HRS23, MIN45, SEC00, turnOffLights);
 }
