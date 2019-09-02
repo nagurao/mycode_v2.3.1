@@ -24,6 +24,7 @@
 #define MIN00 00
 #define MIN45 45
 #define SEC00 00
+constexpr auto EEPROM_ADDRESS = 0x50;
 
 char* getCodeVersion()
 {
@@ -405,6 +406,31 @@ byte colsPins[2] = { 4,5 };
 
 #define BALCONYLIGHT_WITH_PIR_NODE_ID 6
 #define GATELIGHT_WITH_PIR_NODE_ID 8
+
+#endif
+
+#if defined EEPROM_DATA
+#define MEMORY_ADDRESS 0
+unsigned int memoryAddress = 0;
+char nodeValue[5];
+
+byte readEEPROM (int deviceaddress, unsigned int eeaddress)
+{
+	byte rdata = 0xFF;
+	Wire.beginTransmission(deviceaddress);
+	Wire.write((int)(eeaddress >> 8));   // MSB
+	Wire.write((int)(eeaddress & 0xFF)); // LSB
+	Wire.endTransmission();
+	Wire.requestFrom(deviceaddress, 1);
+	if (Wire.available()) rdata = Wire.read();
+	return rdata;
+}
+
+void getNodeNumber (byte inVal, char * nValue)
+{
+	byte temp = sprintf(nValue, "N%03d", inVal);
+	nValue[4] = '\0';
+}
 
 #endif
 
